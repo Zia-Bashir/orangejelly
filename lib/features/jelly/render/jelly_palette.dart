@@ -43,7 +43,7 @@ class JellyPalette {
   static const crimson = JellyPalette(
     fleshDeep: Color(0xFFD81E2C),
     fleshLight: Color(0xFFF2545A),
-    cream: Color(0xFFEFEDCB),
+    cream: Color(0xFFE9E4B6),
     skinDark: Color(0xFF173F1A),
     skinLight: Color(0xFF4F8A3C),
     seed: Color(0xFF2B0F0C),

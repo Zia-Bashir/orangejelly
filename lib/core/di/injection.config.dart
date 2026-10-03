@@ -18,6 +18,8 @@ import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_control
     as _i691;
 import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_stats_cubit.dart'
     as _i490;
+import 'package:watermelonjelly/features/jelly/presentation/cubits/knife_cubit.dart'
+    as _i396;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -32,6 +34,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i490.JellyStatsCubit>(
       () => _i490.JellyStatsCubit(gh<_i960.JellyEngine>()),
+    );
+    gh.factory<_i396.KnifeCubit>(
+      () => _i396.KnifeCubit(gh<_i960.JellyEngine>()),
     );
     return this;
   }

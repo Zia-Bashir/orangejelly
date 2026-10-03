@@ -373,6 +373,39 @@ class JellyEngine {
     return result;
   }
 
+  /// Chops straight down along the world ground line (ax, az) → (bx, bz),
+  /// like a knife blade: a vertical cut plane, limited to the segment (plus
+  /// a small margin) so only geometry under the blade is cut.
+  CutResult sliceAlong(double ax, double az, double bx, double bz) {
+    final dx = bx - ax, dz = bz - az;
+    final len = math.sqrt(dx * dx + dz * dz);
+    if (len < 0.05) return CutResult.none;
+    endGrab();
+    final ux = dx / len, uz = dz / len;
+    final nx = -uz, nz = ux;
+    final d = nx * ax + nz * az;
+    const margin = 0.1;
+    final result = JellyCutter.cut(
+      body,
+      nx: nx,
+      ny: 0,
+      nz: nz,
+      d: d,
+      inRange: (x, _, z) {
+        final t = (x - ax) * ux + (z - az) * uz;
+        return t >= -margin && t <= len + margin;
+      },
+      separation: 0.05,
+      separationSpeed: 1.1,
+    );
+    debugPrint(
+      '✅ (APP LOGS) [sliceAlong] : pieces -> '
+      '${result.piecesBefore} → ${body.numPieces} '
+      '(split ${result.splitParticles})',
+    );
+    return result;
+  }
+
   /// Cuts with an explicit world plane `n · x = d` (used by tests/tools).
   CutResult cutWithPlane(double nx, double ny, double nz, double d) {
     endGrab();

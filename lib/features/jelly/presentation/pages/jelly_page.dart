@@ -5,6 +5,7 @@ import '../../../../app/theme.dart';
 import '../../../../core/di/injection.dart';
 import '../cubits/jelly_controls_cubit.dart';
 import '../cubits/jelly_stats_cubit.dart';
+import '../cubits/knife_cubit.dart';
 import '../widgets/inside_experiment.dart';
 import '../widgets/jelly_header.dart';
 import '../widgets/jelly_viewport.dart';
@@ -23,6 +24,7 @@ class JellyPage extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<JellyControlsCubit>()),
         BlocProvider(create: (_) => getIt<JellyStatsCubit>()),
+        BlocProvider(create: (_) => getIt<KnifeCubit>()),
       ],
       child: const JellyView(),
     );

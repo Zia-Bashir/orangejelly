@@ -102,6 +102,25 @@ class JellyCamera {
     return true;
   }
 
+  /// Intersects the ray through screen point (sx, sy) with the horizontal
+  /// plane y = [planeY]; writes world (x, y, z) into [out]. Rays that point
+  /// at or above the horizon are clamped to [maxDistance] along the ray.
+  void planePoint(
+    double sx,
+    double sy,
+    double planeY,
+    Float64List out, {
+    double maxDistance = 60,
+  }) {
+    rayDirection(sx, sy, out);
+    final dx = out[0], dy = out[1], dz = out[2];
+    var t = dy < -1e-4 ? (planeY - eyeY) / dy : maxDistance;
+    if (t > maxDistance || t < 0) t = maxDistance;
+    out[0] = eyeX + dx * t;
+    out[1] = eyeY + dy * t;
+    out[2] = eyeZ + dz * t;
+  }
+
   /// Unit ray direction through a screen point, written into [out] (xyz).
   void rayDirection(double sx, double sy, Float64List out) {
     final s = pixelsPerUnit * distance;

@@ -40,7 +40,7 @@ class SpecimenPanel extends StatelessWidget {
             if (showHeader) ...[
               SectionLabel(
                 'The Specimen',
-                trailing: Text('fig. 9', style: JellyText.caption),
+                trailing: Text('fig. 1', style: JellyText.caption),
               ),
               gap(10),
               const Hairline(),

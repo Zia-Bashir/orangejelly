@@ -12,7 +12,7 @@ class StudyLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      const Text('MATERIAL STUDIES / NO. 009', style: JellyText.label);
+      const Text('MATERIAL STUDIES / NO. 001', style: JellyText.label);
 }
 
 //// - ====================================================================== -
@@ -128,8 +128,9 @@ class ToolHint extends StatelessWidget {
             : 'Grab any piece — tip, corner, flesh or rind — and pull. '
                   'Scroll, or add a second finger, while holding to twist it.',
       JellyTool.knife =>
-        'Swipe across the jelly to slice it. '
-            'Every piece becomes its own wobbling body.',
+        'Draw a line across the slice — the knife lines up over it and '
+            'cuts when you let go. Cut the pieces again, as small as you '
+            'like.',
     };
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 200),

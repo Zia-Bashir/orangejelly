@@ -17,7 +17,7 @@ abstract final class SliceGeometry {
   static const int layers = 3;
 
   /// Fraction of [radius] where the red flesh gives way to the cream rind.
-  static const double fleshEnd = 0.86;
+  static const double fleshEnd = 0.885;
 
   /// Fraction of [radius] where the cream rind gives way to the green skin.
   static const double creamEnd = 0.95;
