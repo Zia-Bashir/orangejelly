@@ -12,7 +12,7 @@ class StudyLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      const Text('MATERIAL STUDIES / NO. 010', style: JellyText.label);
+      const Text('MATERIAL STUDIES / NO. 01', style: JellyText.label);
 }
 
 //// - ====================================================================== -

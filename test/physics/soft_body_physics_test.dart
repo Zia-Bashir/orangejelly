@@ -2,10 +2,10 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart';
-import 'package:watermelonjelly/features/jelly/physics/slice_mesh.dart';
-import 'package:watermelonjelly/features/jelly/physics/soft_body.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_camera.dart';
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart';
+import 'package:orangejelly/features/jelly/physics/slice_mesh.dart';
+import 'package:orangejelly/features/jelly/physics/soft_body.dart';
+import 'package:orangejelly/features/jelly/render/jelly_camera.dart';
 
 void _settle(JellyEngine e, {double seconds = 3}) {
   for (var i = 0; i < (seconds * 60).round(); i++) {

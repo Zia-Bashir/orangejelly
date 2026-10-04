@@ -2,12 +2,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:watermelonjelly/app/app.dart';
-import 'package:watermelonjelly/core/di/injection.dart';
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart';
-import 'package:watermelonjelly/features/jelly/presentation/widgets/jelly_viewport.dart';
-import 'package:watermelonjelly/features/jelly/presentation/widgets/mobile_controls_sheet.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_painter.dart';
+import 'package:orangejelly/app/app.dart';
+import 'package:orangejelly/core/di/injection.dart';
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart';
+import 'package:orangejelly/features/jelly/presentation/widgets/jelly_viewport.dart';
+import 'package:orangejelly/features/jelly/presentation/widgets/mobile_controls_sheet.dart';
+import 'package:orangejelly/features/jelly/render/jelly_painter.dart';
 
 import 'helpers/fonts.dart';
 

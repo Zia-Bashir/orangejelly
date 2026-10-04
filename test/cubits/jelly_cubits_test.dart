@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_controls_cubit.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_controls_state.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_stats_cubit.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_palette.dart';
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/jelly_controls_cubit.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/jelly_controls_state.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/jelly_stats_cubit.dart';
+import 'package:orangejelly/features/jelly/render/jelly_palette.dart';
 
 void main() {
   late JellyEngine engine;

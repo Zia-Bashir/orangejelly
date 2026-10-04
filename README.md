@@ -1,10 +1,12 @@
 # Orange Jelly
 
-A real-time soft-body orange slice you can grab, twist, and cut. Flutter app for Android, iOS, and web. The package name is `watermelonjelly`; the app title is **Orange Jelly**.
+A real-time soft-body orange slice you can grab, twist, and cut. Flutter app for Android, iOS, and web. The package name is `orangejelly`; the app title is **Orange Jelly**.
 
-Material study no. 010. A wedge of sunshine. A little wobble. Too soft to share.
+Material study no. 01. A wedge of sunshine. A little wobble. Too soft to share.
 
 ![Orange Jelly running in the browser: glossy navel slice, specimen panel, and live stats](docs/orange-jelly.png)
+
+![Orange Jelly on iPhone: portrait layout with the slice, live stats, and Hand, Knife, and Specimen controls](docs/orange-jelly-phone.png)
 
 ## What you can do
 
@@ -98,7 +100,8 @@ test/
   physics/              volume, cuts, grab, reset
   cubits/               controls, stats, knife timing
   widget_test.dart      portrait sheet, landscape panel, knife drag
-docs/orange-jelly.png   screenshot used above
+docs/orange-jelly.png        wide-layout screenshot used above
+docs/orange-jelly-phone.png  iPhone screenshot used above
 ```
 
 State is `flutter_bloc` only. `JellyEngine` is a lazy singleton. `JellyControlsCubit`, `JellyStatsCubit`, and `KnifeCubit` are page-scoped factories from GetIt. The viewport `AnimationController` is only the frame clock. UI state does not use `setState`.

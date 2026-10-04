@@ -12,13 +12,13 @@
 
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart'
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart'
     as _i960;
-import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_controls_cubit.dart'
+import 'package:orangejelly/features/jelly/presentation/cubits/jelly_controls_cubit.dart'
     as _i691;
-import 'package:watermelonjelly/features/jelly/presentation/cubits/jelly_stats_cubit.dart'
+import 'package:orangejelly/features/jelly/presentation/cubits/jelly_stats_cubit.dart'
     as _i490;
-import 'package:watermelonjelly/features/jelly/presentation/cubits/knife_cubit.dart'
+import 'package:orangejelly/features/jelly/presentation/cubits/knife_cubit.dart'
     as _i396;
 
 extension GetItInjectableX on _i174.GetIt {

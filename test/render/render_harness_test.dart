@@ -6,16 +6,16 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:watermelonjelly/app/app.dart';
-import 'package:watermelonjelly/core/di/injection.dart';
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/knife_state.dart';
-import 'package:watermelonjelly/features/jelly/presentation/widgets/jelly_viewport.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_camera.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_painter.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_palette.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_renderer.dart';
-import 'package:watermelonjelly/features/jelly/render/knife_renderer.dart';
+import 'package:orangejelly/app/app.dart';
+import 'package:orangejelly/core/di/injection.dart';
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/knife_state.dart';
+import 'package:orangejelly/features/jelly/presentation/widgets/jelly_viewport.dart';
+import 'package:orangejelly/features/jelly/render/jelly_camera.dart';
+import 'package:orangejelly/features/jelly/render/jelly_painter.dart';
+import 'package:orangejelly/features/jelly/render/jelly_palette.dart';
+import 'package:orangejelly/features/jelly/render/jelly_renderer.dart';
+import 'package:orangejelly/features/jelly/render/knife_renderer.dart';
 
 import '../helpers/fonts.dart';
 

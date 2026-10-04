@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:watermelonjelly/features/jelly/physics/jelly_engine.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/knife_cubit.dart';
-import 'package:watermelonjelly/features/jelly/presentation/cubits/knife_state.dart';
-import 'package:watermelonjelly/features/jelly/render/jelly_camera.dart';
+import 'package:orangejelly/features/jelly/physics/jelly_engine.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/knife_cubit.dart';
+import 'package:orangejelly/features/jelly/presentation/cubits/knife_state.dart';
+import 'package:orangejelly/features/jelly/render/jelly_camera.dart';
 
 Offset _sliceCentre(JellyEngine e, JellyCamera cam) {
   var x = 0.0, y = 0.0, z = 0.0;
