@@ -6,7 +6,7 @@ Material study no. 01. A wedge of sunshine. A little wobble. Too soft to share.
 
 ![Orange Jelly running in the browser: glossy navel slice, specimen panel, and live stats](docs/orange-jelly.png)
 
-![Orange Jelly on iPhone: portrait layout with the slice, live stats, and Hand, Knife, and Specimen controls](docs/orange-jelly-phone.png)
+<img src="docs/orange-jelly-phone.png" alt="Orange Jelly on iPhone: portrait layout with the slice, live stats, and Hand, Knife, and Specimen controls" width="280">
 
 ## What you can do
 
