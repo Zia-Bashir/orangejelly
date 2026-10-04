@@ -84,7 +84,7 @@ class _Body extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
           child: Text(
-            'The slice is ${s.tetrahedra} tetrahedra hung on ${s.particles} '
+            'The orange slice is ${s.tetrahedra} tetrahedra hung on ${s.particles} '
             'particles, solved with extended position-based dynamics (XPBD) '
             'in small substeps every frame. Edge constraints give it '
             'firmness; per-tetrahedron volume constraints keep it from '

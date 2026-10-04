@@ -72,7 +72,7 @@ class JellyRenderer {
   Float64List _seedBary = Float64List(0);
   Float64List _seedDir = Float64List(0);
   final Float64List _proj = Float64List(3);
-  final Paint _seedPaint = Paint()..blendMode = BlendMode.multiply;
+  final Paint _seedPaint = Paint();
 
   Float64List _normals = Float64List(0);
 
@@ -568,17 +568,12 @@ class JellyRenderer {
     }
   }
 
-  /// Soft teardrop decals for the seeds embedded under [piece]'s top,
-  /// multiplied into the shaded surface so the gloss above them survives.
+  /// Pale oval pips embedded under [piece]'s top. Drawn over the shaded
+  /// surface at partial opacity so a little of the gloss still shows.
   void _paintSeeds(Canvas canvas, SoftBody body, JellyCamera cam, int piece) {
     final pos = body.pos, patch = _patch, faces = body.faces;
     final seedColor = _palette!.seed;
-    final tint = Color.from(
-      alpha: 1,
-      red: seedColor.r * 0.8 + 0.12,
-      green: seedColor.g * 0.8 + 0.05,
-      blue: seedColor.b * 0.8 + 0.05,
-    );
+    final tint = seedColor;
     for (var s = 0; s < _seedFace.length; s++) {
       final f = _seedFace[s];
       if (f < 0 || body.particlePiece[faces[f * 3]] != piece) continue;
@@ -640,25 +635,25 @@ class JellyRenderer {
       );
       final vx = _proj[0] - sx, vy = _proj[1] - sy;
 
-      //* ---[ Teardrop ]---
+      //* ---[ Oval pip ]---
 
       final path = Path();
       const steps = 18;
       for (var i = 0; i <= steps; i++) {
         final th = 2 * math.pi * i / steps;
         final u = math.cos(th);
-        final v = math.sin(th) * (0.3 + 0.7 * math.sqrt((1 + u) / 2));
+        final v = math.sin(th) * (0.72 + 0.28 * math.sqrt((1 + u) / 2));
         final px = sx + u * ux + v * vx, py = sy + u * uy + v * vy;
         i == 0 ? path.moveTo(px, py) : path.lineTo(px, py);
       }
       path.close();
       final minor = math.sqrt(vx * vx + vy * vy);
       _seedPaint
-        ..color = tint.withValues(alpha: 0.55)
+        ..color = tint.withValues(alpha: 0.35)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 0.8 + minor * 0.9);
       canvas.drawPath(path, _seedPaint);
       _seedPaint
-        ..color = tint
+        ..color = tint.withValues(alpha: 0.72)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 0.5 + minor * 0.3);
       canvas.drawPath(path, _seedPaint);
     }
@@ -741,7 +736,7 @@ class JellyRenderer {
     final light = 0.34 + 0.62 * wrap + 0.08 * (ny * 0.5 + 0.5);
     // Light scattered inside the gummy: saturated bleed into the shade side.
     final sss = (1 - wrap) * 0.22;
-    // Thin, translucent flesh glows lighter / pinker, most at grazing view.
+    // Thin, translucent flesh glows lighter, most at grazing view.
     final edge = 1 - ndv;
     final glowAmt = glow * (0.10 + 0.40 * edge * edge) * (0.6 + 0.4 * wrap);
 
@@ -756,9 +751,9 @@ class JellyRenderer {
       f,
     );
 
-    final outR = r * light + r * r * sss + (r * 0.5 + 0.5) * glowAmt + spec;
-    final outG = g * light + g * g * sss + (g * 0.5 + 0.42) * glowAmt + spec;
-    final outB = b * light + b * b * sss + (b * 0.5 + 0.45) * glowAmt + spec;
+    final outR = r * light + r * r * sss + (r * 0.45 + 0.55) * glowAmt + spec;
+    final outG = g * light + g * g * sss + (g * 0.5 + 0.32) * glowAmt + spec;
+    final outB = b * light + b * b * sss + (b * 0.5 + 0.12) * glowAmt + spec;
     return 0xFF000000 | (_to8(outR) << 16) | (_to8(outG) << 8) | _to8(outB);
   }
 

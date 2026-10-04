@@ -61,7 +61,7 @@ class StatsBar extends StatelessWidget {
             if (showFootnote) ...[
               const SizedBox(height: 8),
               const Text(
-                'Illustrative scale: 1 sim unit = 3.5 cm, gummy at 1.3 g/cm³. '
+                'Illustrative scale: 1 sim unit = 3.5 cm, orange jelly at 1.3 g/cm³. '
                 'Volume and energy are summed live over every tetrahedron '
                 'and particle.',
                 style: JellyText.small,

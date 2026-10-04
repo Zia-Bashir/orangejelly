@@ -17,7 +17,7 @@ void main() {
     test('starts with the reference defaults', () {
       final cubit = JellyControlsCubit(engine);
       expect(cubit.state.tool, JellyTool.hand);
-      expect(cubit.state.variety, JellyVariety.crimson);
+      expect(cubit.state.variety, JellyVariety.navel);
       expect(cubit.state.firmness, 0.40);
       expect(cubit.state.damping, 0.45);
       expect(cubit.state.paused, isFalse);
@@ -31,12 +31,12 @@ void main() {
       act: (c) => c
         ..selectTool(JellyTool.knife)
         ..selectTool(JellyTool.knife)
-        ..selectVariety(JellyVariety.rose),
+        ..selectVariety(JellyVariety.blood),
       expect: () => [
         const JellyControlsState(tool: JellyTool.knife),
         const JellyControlsState(
           tool: JellyTool.knife,
-          variety: JellyVariety.rose,
+          variety: JellyVariety.blood,
         ),
       ],
     );
@@ -67,7 +67,7 @@ void main() {
       verify: (c) {
         final s = c.state;
         expect(s.quarterSpeed, isTrue);
-        expect(s.timeScale, 0.25);
+        expect(s.timeScale, JellyControlsState.playback * 0.25);
         expect(s.showMesh, isTrue);
         expect(s.paused, isTrue);
         expect(s.panelExpanded, isTrue);

@@ -18,7 +18,7 @@ enum JellyTool {
 class JellyControlsState extends Equatable {
   const JellyControlsState({
     this.tool = JellyTool.hand,
-    this.variety = JellyVariety.crimson,
+    this.variety = JellyVariety.navel,
     this.firmness = 0.40,
     this.damping = 0.45,
     this.quarterSpeed = false,
@@ -42,7 +42,11 @@ class JellyControlsState extends Equatable {
   /// Whether the "Inside the experiment" note is open.
   final bool insideExpanded;
 
-  double get timeScale => quarterSpeed ? 0.25 : 1.0;
+  /// Wall-clock multiplier. Normal play runs a bit above 1:1 so the slice
+  /// doesn't feel floaty. The slow-motion checkbox is a quarter of that.
+  static const double playback = 1.4;
+
+  double get timeScale => playback * (quarterSpeed ? 0.25 : 1.0);
 
   JellyControlsState copyWith({
     JellyTool? tool,

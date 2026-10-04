@@ -69,7 +69,7 @@ ui.Image _renderCloseUp(
   final renderer = JellyRenderer();
   final knifeRenderer = KnifeRenderer();
   const empty = KnifeState();
-  renderer.paintShadows(canvas, engine.body, cam, JellyPalette.crimson);
+  renderer.paintShadows(canvas, engine.body, cam, JellyPalette.navel);
   knifeRenderer
     ..paintShadow(canvas, cam, knife ?? empty)
     ..paintKnife(canvas, cam, knife ?? empty, lowerPass: true);
@@ -126,7 +126,7 @@ Future<void> _knifeSequence(
 ) async {
   tester.view.physicalSize = size * 2;
   tester.view.devicePixelRatio = 2;
-  await tester.pumpWidget(const MelonJellyApp());
+  await tester.pumpWidget(const OrangeJellyApp());
   getIt<JellyEngine>().reset();
   await _frames(tester, 1.5);
   await _capture(tester, '${prefix}_rest');
@@ -238,7 +238,7 @@ void main() {
           Canvas(r),
           engine.body,
           cam,
-          JellyPalette.crimson,
+          JellyPalette.navel,
           showMesh: false,
         );
         r.endRecording().dispose();

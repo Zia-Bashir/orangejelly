@@ -3,24 +3,24 @@ import 'dart:ui';
 //* --- [ Jelly Variety ] ---
 
 enum JellyVariety {
-  crimson('Crimson'),
-  golden('Golden'),
-  rose('Rosé');
+  navel('Navel'),
+  blood('Blood'),
+  cara('Cara Cara');
 
   const JellyVariety(this.label);
 
   final String label;
 
   JellyPalette get palette => switch (this) {
-    JellyVariety.crimson => JellyPalette.crimson,
-    JellyVariety.golden => JellyPalette.golden,
-    JellyVariety.rose => JellyPalette.rose,
+    JellyVariety.navel => JellyPalette.navel,
+    JellyVariety.blood => JellyPalette.blood,
+    JellyVariety.cara => JellyPalette.cara,
   };
 }
 
 //* --- [ Jelly Palette ] ---
 
-/// Material colours of one watermelon variety.
+/// Material colours of one orange variety: flesh, white pith, peel, pips.
 class JellyPalette {
   const JellyPalette({
     required this.fleshDeep,
@@ -34,39 +34,44 @@ class JellyPalette {
 
   final Color fleshDeep;
   final Color fleshLight;
+
+  /// White pith between flesh and peel.
   final Color cream;
   final Color skinDark;
   final Color skinLight;
   final Color seed;
   final Color shadowTint;
 
-  static const crimson = JellyPalette(
-    fleshDeep: Color(0xFFD81E2C),
-    fleshLight: Color(0xFFF2545A),
-    cream: Color(0xFFE9E4B6),
-    skinDark: Color(0xFF173F1A),
-    skinLight: Color(0xFF4F8A3C),
-    seed: Color(0xFF2B0F0C),
-    shadowTint: Color(0xFF7A1E22),
+  /// Classic bright navel: juicy orange flesh, white pith, dimpled peel.
+  static const navel = JellyPalette(
+    fleshDeep: Color(0xFFE25A08),
+    fleshLight: Color(0xFFFFB15A),
+    cream: Color(0xFFF6F1E4),
+    skinDark: Color(0xFFC24E0C),
+    skinLight: Color(0xFFF3922A),
+    seed: Color(0xFFF4E6C4),
+    shadowTint: Color(0xFFC45A18),
   );
 
-  static const golden = JellyPalette(
-    fleshDeep: Color(0xFFE59A1C),
-    fleshLight: Color(0xFFF6C454),
-    cream: Color(0xFFF2EFD0),
-    skinDark: Color(0xFF1C4519),
-    skinLight: Color(0xFF5A9440),
-    seed: Color(0xFF2E1A0A),
-    shadowTint: Color(0xFF8A5A12),
+  /// Blood orange: burgundy flesh, russet peel.
+  static const blood = JellyPalette(
+    fleshDeep: Color(0xFF8C1828),
+    fleshLight: Color(0xFFE25A48),
+    cream: Color(0xFFF4EBDC),
+    skinDark: Color(0xFF6A2416),
+    skinLight: Color(0xFFE07838),
+    seed: Color(0xFFF0DCC4),
+    shadowTint: Color(0xFF6A1820),
   );
 
-  static const rose = JellyPalette(
-    fleshDeep: Color(0xFFE5627A),
-    fleshLight: Color(0xFFF59AA6),
-    cream: Color(0xFFF3EFD6),
-    skinDark: Color(0xFF2E5A2A),
-    skinLight: Color(0xFF79A85E),
-    seed: Color(0xFF3A1518),
-    shadowTint: Color(0xFF8A3A48),
+  /// Cara Cara: salmon-pink flesh, warm orange peel.
+  static const cara = JellyPalette(
+    fleshDeep: Color(0xFFE87858),
+    fleshLight: Color(0xFFFFC6A4),
+    cream: Color(0xFFF7F2E6),
+    skinDark: Color(0xFFD06018),
+    skinLight: Color(0xFFF4A24A),
+    seed: Color(0xFFF6E8D0),
+    shadowTint: Color(0xFFC06040),
   );
 }

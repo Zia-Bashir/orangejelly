@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import '../features/jelly/presentation/pages/jelly_page.dart';
 import 'theme.dart';
 
-//* --- [ Melon Jelly App ] ---
+//* --- [ Orange Jelly App ] ---
 
-class MelonJellyApp extends StatelessWidget {
-  const MelonJellyApp({super.key});
+class OrangeJellyApp extends StatelessWidget {
+  const OrangeJellyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Melon Jelly',
+      title: 'Orange Jelly',
       debugShowCheckedModeBanner: false,
       theme: buildJellyTheme(),
       builder: (context, child) => MediaQuery.withClampedTextScaling(

@@ -11,5 +11,5 @@ void main() {
   configureDependencies();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   debugPrint('✅ (APP LOGS) [main] : dependencies configured');
-  runApp(const MelonJellyApp());
+  runApp(const OrangeJellyApp());
 }

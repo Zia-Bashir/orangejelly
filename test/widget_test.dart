@@ -15,7 +15,7 @@ Future<void> _pumpAt(WidgetTester tester, Size size) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
-  await tester.pumpWidget(const MelonJellyApp());
+  await tester.pumpWidget(const OrangeJellyApp());
   await tester.pump(const Duration(milliseconds: 32));
 }
 
@@ -58,7 +58,7 @@ void main() {
 
   testWidgets('portrait phone uses the bottom controls sheet', (tester) async {
     await _pumpAt(tester, const Size(390, 844));
-    expect(find.text('Melon'), findsOneWidget);
+    expect(find.text('Orange'), findsOneWidget);
     expect(find.byType(MobileControlsSheet), findsOneWidget);
     expect(find.text('THE SPECIMEN'), findsNothing);
 

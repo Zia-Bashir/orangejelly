@@ -12,8 +12,9 @@ class XpbdParams {
   /// Tetrahedral volume compliance. Zero keeps volume (near) incompressible.
   double volumeCompliance = 0;
 
-  /// Gravity along -Y in sim units / s².
-  double gravity = 60;
+  /// Gravity along -Y in sim units / s². Raised so drops and bounces
+  /// read lively instead of floaty (1 unit = 3.5 cm).
+  double gravity = 90;
 
   /// Per-second rate at which non-rigid (internal) motion is damped.
   double internalDamping = 3;

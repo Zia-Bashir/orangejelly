@@ -6,8 +6,8 @@ import 'jelly_palette.dart';
 
 //* --- [ Jelly Material ] ---
 
-/// Procedural watermelon colouring evaluated in material (rest) space, so
-/// outer skin, cream rind, flesh, seeds and freshly cut faces all colour
+/// Procedural orange colouring evaluated in material (rest) space, so
+/// peel, white pith, flesh, pips and freshly cut faces all colour
 /// themselves consistently wherever the jelly is sliced.
 ///
 /// Each sample is 4 floats: linear-ish RGB (0..1) plus a translucency weight
@@ -33,15 +33,15 @@ class JellyMaterial {
   static const double _domeHeight = 0.06;
   static const double _domeReach = 1.0;
 
-  static const double _seedAlong = 0.105;
-  static const double _seedAcross = 0.060;
-  static const double _seedVertical = 0.34;
+  static const double _seedAlong = 0.072;
+  static const double _seedAcross = 0.048;
+  static const double _seedVertical = 0.28;
 
   //* ---[ Seed layout ]---
 
-  /// Seeds sit in arcs across the flesh (x, y, z, cos φ, sin φ per seed).
+  /// A few pale pips in the flesh (x, y, z, cos φ, sin φ per pip).
   static Float64List _buildSeeds() {
-    const rows = [(0.36, 3), (0.50, 4), (0.63, 5), (0.75, 6)];
+    const rows = [(0.46, 2), (0.66, 2)];
     final rnd = math.Random(9);
     final out = <double>[];
     const r = SliceGeometry.radius;
@@ -135,16 +135,16 @@ class JellyMaterial {
     var cg = _lerp(p.fleshDeep.g, p.fleshLight.g, lightness);
     var cb = _lerp(p.fleshDeep.b, p.fleshLight.b, lightness);
 
-    // Thin where two boundaries meet (edges, the tip, along the rind).
+    // Thin where two boundaries meet (edges, the tip, along the pith).
     var glow = math.exp(-(d1 + d2) / 0.32) * 0.85 + (1 - core) * 0.25;
 
     //* ---[ Seeds ]---
 
     final (seed, halo) = _seedStrength(x, y, z);
     if (halo > 0) {
-      cr = _lerp(cr, p.fleshDeep.r * 0.82, halo * 0.55);
-      cg = _lerp(cg, p.fleshDeep.g * 0.82, halo * 0.55);
-      cb = _lerp(cb, p.fleshDeep.b * 0.82, halo * 0.55);
+      cr = _lerp(cr, p.fleshDeep.r, halo * 0.28);
+      cg = _lerp(cg, p.fleshDeep.g, halo * 0.28);
+      cb = _lerp(cb, p.fleshDeep.b, halo * 0.28);
     }
     if (seed > 0 && seedBodies) {
       cr = _lerp(cr, p.seed.r, seed);
@@ -153,7 +153,7 @@ class JellyMaterial {
       glow *= 1 - seed;
     }
 
-    //* ---[ Cream rind (soft blush → cream → pale green) ]---
+    //* ---[ White pith (flesh blush → cream → peel) ]---
 
     final blush = _smooth(
       SliceGeometry.fleshEnd - 0.07,
@@ -175,23 +175,23 @@ class JellyMaterial {
       r,
     );
     if (creamT > 0) {
-      final greenish =
+      final towardPeel =
           _smooth(
             SliceGeometry.fleshEnd + 0.02,
             SliceGeometry.creamEnd + 0.01,
             r,
           ) *
-          0.55;
-      final rr = _lerp(p.cream.r, p.skinLight.r, greenish);
-      final gg = _lerp(p.cream.g, p.skinLight.g, greenish);
-      final bb = _lerp(p.cream.b, p.skinLight.b, greenish);
+          0.35;
+      final rr = _lerp(p.cream.r, p.skinLight.r, towardPeel);
+      final gg = _lerp(p.cream.g, p.skinLight.g, towardPeel);
+      final bb = _lerp(p.cream.b, p.skinLight.b, towardPeel);
       cr = _lerp(cr, rr, creamT);
       cg = _lerp(cg, gg, creamT);
       cb = _lerp(cb, bb, creamT);
       glow *= 1 - creamT * 0.7;
     }
 
-    //* ---[ Striped green skin ]---
+    //* ---[ Dimpled citrus peel ]---
 
     final skinT = _smooth(
       SliceGeometry.creamEnd - 0.012,
@@ -201,16 +201,13 @@ class JellyMaterial {
     if (skinT > 0) {
       final s = phi * radius;
       final yn = y / thick;
-      final warp =
-          0.06 * math.sin(yn * 6.0 + s * 4.1) +
-          0.025 * math.sin(yn * 13.0 - s * 9.3);
-      final v = s * 11.5 + warp * 11 + 0.8 * math.sin(s * 2.6 + 1.7);
-      final widthMod = 0.22 * math.sin(s * 4.7 + 0.8);
-      final dark = _smooth(-0.35 + widthMod, 0.15 + widthMod, math.sin(v));
-      final speckle = (_hash(x * 3.1, y * 2.7, z * 3.3) - 0.5) * 0.05;
-      final rr = _lerp(p.skinLight.r, p.skinDark.r, dark * 0.92) + speckle;
-      final gg = _lerp(p.skinLight.g, p.skinDark.g, dark * 0.92) + speckle;
-      final bb = _lerp(p.skinLight.b, p.skinDark.b, dark * 0.92) + speckle;
+      final glands =
+          math.sin(s * 42 + yn * 28) * math.sin(yn * 36 - s * 19 + 1.1);
+      final pore = _smooth(0.25, 0.9, glands);
+      final speckle = (_hash(x * 8.4, y * 6.2, z * 8.1) - 0.5) * 0.045;
+      final rr = _lerp(p.skinLight.r, p.skinDark.r, pore * 0.62) + speckle;
+      final gg = _lerp(p.skinLight.g, p.skinDark.g, pore * 0.62) + speckle;
+      final bb = _lerp(p.skinLight.b, p.skinDark.b, pore * 0.62) + speckle;
       cr = _lerp(cr, rr, skinT);
       cg = _lerp(cg, gg, skinT);
       cb = _lerp(cb, bb, skinT);
@@ -226,7 +223,7 @@ class JellyMaterial {
     out[o + 3] = glow.clamp(0.0, 1.0);
   }
 
-  /// (seed body, surrounding pocket) strengths — soft teardrops that read as
+  /// (pip body, surrounding pocket) strengths — small pale ovals that read as
   /// embedded a little below the surface rather than painted on.
   (double, double) _seedStrength(double x, double y, double z) {
     final seeds = _seeds;
@@ -239,8 +236,8 @@ class JellyMaterial {
       final along = dx * seeds[i + 3] + dz * seeds[i + 4];
       final across = -dx * seeds[i + 4] + dz * seeds[i + 3];
       final dy = (y - seeds[i + 1]) / _seedVertical;
-      // Teardrop: narrower toward the apex (negative along).
-      final width = _seedAcross * (along < 0 ? 0.62 + 0.6 * along.abs() : 1.0);
+      // Soft oval pip, slightly narrower toward the tip.
+      final width = _seedAcross * (along < 0 ? 0.78 + 0.35 * along.abs() : 1.0);
       final a = along / _seedAlong, c = across / width;
       final d = math.sqrt(a * a + c * c + dy * dy);
       final s = 1 - _smooth(0.1, 1.2, d);

@@ -3,10 +3,10 @@ import 'dart:typed_data';
 
 //* --- [ Slice Geometry ] ---
 
-/// Dimensions of the watermelon wedge in simulation units (1 unit = 3.5 cm).
+/// Dimensions of the orange wedge in simulation units (1 unit = 3.5 cm).
 ///
 /// Material (rest) coordinates use a slice-local frame: the apex sits at the
-/// origin, the wedge bisector points along +X, Y is up and the arc (rind) lies
+/// origin, the wedge bisector points along +X, Y is up and the arc (peel) lies
 /// at distance [radius] from the apex.
 abstract final class SliceGeometry {
   static const double radius = 2.38;
@@ -16,13 +16,13 @@ abstract final class SliceGeometry {
   static const int rows = 10;
   static const int layers = 3;
 
-  /// Fraction of [radius] where the red flesh gives way to the cream rind.
-  static const double fleshEnd = 0.885;
+  /// Fraction of [radius] where the orange flesh gives way to the white pith.
+  static const double fleshEnd = 0.82;
 
-  /// Fraction of [radius] where the cream rind gives way to the green skin.
-  static const double creamEnd = 0.95;
+  /// Fraction of [radius] where the white pith gives way to the peel.
+  static const double creamEnd = 0.93;
 
-  /// World yaw of the wedge bisector (rind faces the viewer, tip points back
+  /// World yaw of the wedge bisector (peel faces the viewer, tip points back
   /// and to the right like the reference specimen).
   static const double worldYaw = 2.2;
 

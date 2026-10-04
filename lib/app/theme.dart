@@ -114,7 +114,7 @@ ThemeData buildJellyTheme() {
     brightness: Brightness.light,
     scaffoldBackgroundColor: JellyColors.background,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFFD81E2C),
+      seedColor: const Color(0xFFE86A12),
       surface: JellyColors.background,
     ),
     fontFamily: 'Inter',

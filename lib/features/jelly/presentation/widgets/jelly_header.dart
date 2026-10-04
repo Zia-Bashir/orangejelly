@@ -12,14 +12,14 @@ class StudyLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      const Text('MATERIAL STUDIES / NO. 001', style: JellyText.label);
+      const Text('MATERIAL STUDIES / NO. 010', style: JellyText.label);
 }
 
 //// - ====================================================================== -
 
 //* --- [ Jelly Title ] ---
 
-/// "Melon / Jelly." with the second line indented like the reference.
+/// "Orange / Jelly." with the second line indented like the reference.
 class JellyTitle extends StatelessWidget {
   const JellyTitle({super.key, required this.size});
 
@@ -30,13 +30,13 @@ class JellyTitle extends StatelessWidget {
     final style = JellyText.title(size);
     return Semantics(
       header: true,
-      label: 'Melon Jelly.',
+      label: 'Orange Jelly.',
       child: ExcludeSemantics(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Melon', style: style),
+            Text('Orange', style: style),
             Padding(
               padding: EdgeInsets.only(left: size * 0.42),
               child: Text('Jelly.', style: style),
@@ -59,7 +59,7 @@ class JellyTagline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-    'A slice of summer.\nA little wobble.\nToo soft to share.',
+    'A wedge of sunshine.\nA little wobble.\nToo soft to share.',
     style: JellyText.tagline.copyWith(fontSize: size),
   );
 }
@@ -123,9 +123,9 @@ class ToolHint extends StatelessWidget {
     final text = switch (tool) {
       JellyTool.hand =>
         compact
-            ? 'Grab any piece — tip, corner, flesh or rind — and pull. '
+            ? 'Grab any piece — tip, corner, flesh or peel — and pull. '
                   'Add a second finger while holding to twist it.'
-            : 'Grab any piece — tip, corner, flesh or rind — and pull. '
+            : 'Grab any piece — tip, corner, flesh or peel — and pull. '
                   'Scroll, or add a second finger, while holding to twist it.',
       JellyTool.knife =>
         'Draw a line across the slice — the knife lines up over it and '
